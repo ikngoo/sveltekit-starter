@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import adapterStatic from "@sveltejs/adapter-static";
+import adapter from '@sveltejs/adapter-auto';
 import sveltePreprocess from "svelte-preprocess";
 import autoprefixer from "autoprefixer";
 
@@ -19,11 +20,10 @@ const preprocess = sveltePreprocess({
 const config = {
 	preprocess,
 	kit: {
-		adapter: adapterStatic(),
-		prerender: { default: true },
-		trailingSlash: "always",
-		paths: {
-			base
+		adapter: adapter(),
+		// Override http methods in the Todo forms
+		methodOverride: {
+			allowed: ['PATCH', 'DELETE']
 		},
 	}
 };

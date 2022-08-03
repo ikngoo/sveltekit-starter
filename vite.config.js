@@ -11,7 +11,8 @@ const timestamp = timeFormat("%Y-%m-%d-%H:%M")(new Date());
 const config = {
 	define: {
 		__VERSION__: JSON.stringify(version),
-		__TIMESTAMP__: JSON.stringify(timestamp)
+		__TIMESTAMP__: JSON.stringify(timestamp),
+		'import.meta.env.VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID)
 	},
 	server: {
 		port: 3000
